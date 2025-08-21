@@ -4,21 +4,21 @@
 #include <map>
 #include <string>
 #include <shader.h>
-#include <mesh.h>
+#include <model.h>
 
 class ResourceManager {
 public:
     static int id;
     static std::map<std::string, Shader> shaders;
-    static std::map<std::string, Mesh> meshes;
+    static std::map<std::string, Model> models;
 
     // Shaders
     static Shader loadShader(std::string shader_name, std::string vertex, std::string fragment);
     static Shader getShader(std::string shader_name);
 
     // Meshs
-    static Mesh loadMesh(std::string fileName);
-    static Mesh getMesh(std::string fileName);
+    static Model loadModel(std::string model_name, std::string model_file);
+    static Model getModel(std::string model_name);
 };
 
 #endif

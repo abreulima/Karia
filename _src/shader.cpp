@@ -2,6 +2,7 @@
 #include <ostream>
 #include <shader.h>
 #include <string>
+#include <glm/gtc/type_ptr.hpp>
 #include <GLES3/gl3.h>
 
 void Shader::compile (std::string vertex_file, std::string fragment_file) {
@@ -53,3 +54,20 @@ void Shader::compile (std::string vertex_file, std::string fragment_file) {
     glDeleteShader(vertex_id);
     glDeleteShader(fragment_id);
 }
+
+void Shader::setInt(std::string name, int value) {
+    glUniform1i(glGetUniformLocation(this->id, name.c_str()), value);
+}
+
+void Shader::setFloat(std::string name, float value) {
+    glUniform1f(glGetUniformLocation(this->id, name.c_str()), value);
+}
+
+void Shader::setMatrix4(std::string name, const glm::mat4 &matrix){
+    glUniformMatrix4fv(
+        glGetUniformLocation(this->id, name.c_str()),
+        1,
+        GL_FALSE,
+        glm::value_ptr(matrix));
+}
+
