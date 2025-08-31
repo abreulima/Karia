@@ -5,6 +5,7 @@
 #include <string>
 #include <shader.h>
 #include <model.h>
+#include <texture2D.h>
 
 class ResourceManager {
 public:
@@ -19,6 +20,10 @@ public:
     // Meshs
     static Model loadModel(std::string model_name, std::string model_file);
     static Model getModel(std::string model_name);
+
+    // Texture 2D
+    static Texture2D loadTexture(std::string texture_name, std::string texture_file);
+    static Texture2D getTexture(std::string texture_name);
 };
 
 #endif

@@ -89,10 +89,8 @@ Model ResourceManager::loadModel(std::string model_name, std::string model_file)
                 attributes.colors[3 * index.vertex_index + 2]
             };
             model.colors.push_back(colors);
-
         }
     }
-    std::printf("%f \n", model.colors[0][0]);
     models[model_name] = model;
     return models[model_name];
 }

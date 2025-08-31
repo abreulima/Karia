@@ -1,11 +1,21 @@
 #version 300 es
 
-precision mediump float;
+precision highp float;
 
-in vec3 vColors;
-out vec4 fragColor;
+layout(location = 0) out vec3 gColor;
+layout(location = 1) out vec3 gNormal;
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoord;
+in vec3 VertexColor;
+
+uniform sampler2D image;
 
 void main()
 {
-    fragColor = vec4(vColors, 1.0);
+	gColor = vec3(1.0, 0.0, 1.0);
+	vec3 normal = normalize(Normal);
+	gNormal = normal * 0.5 + 0.5;
+	gColor = texture(image, TexCoord).rgb;
 }
